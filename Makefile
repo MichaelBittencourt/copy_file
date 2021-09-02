@@ -74,7 +74,7 @@ pre_processorFolder:
 objFolder:
 	@ mkdir -p $(OBJ_FOLDER)
 
-.PHONY: all clean debug debug_setup assembly_setup assembly pre_processor_setup pre_processor no_optimization no_optimization_setup
+.PHONY: all clean debug debug_setup assembly_setup assembly pre_processor_setup pre_processor no_optimization no_optimization_setup help
 
 no_otimization: no_otimization_setup all
 
@@ -98,4 +98,14 @@ clean:
 	test -e $(ASSEMBLY_FOLDER) && rm -f $(ASSEMBLY_FOLDER)/*.s && rmdir $(ASSEMBLY_FOLDER) || true
 	test -e $(PRE_PROCESSOR_FOLDER) && rm -f $(PRE_PROCESSOR_FOLDER)/*.c && rmdir $(PRE_PROCESSOR_FOLDER) || true
 
-
+help:
+	@ echo "Usage:"
+	@ echo ""
+	@ echo "\tmake -> build normal bynary"
+	@ echo "\tmake debug -> build bynary as debug mode"
+	@ echo "\tmake pre_processor -> build pre-processed C code"
+	@ echo "\tmake assembly -> build assembly code"
+	@ echo "\tmake no_optimization -> build without optimization"
+	@ echo ""
+	@ echo "\t[OBS]: You can conbine these options"
+	@ echo "\t\tEg: make assembly debug"
